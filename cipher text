@@ -1,0 +1,50 @@
+def encrypt(shift):
+    encypted_text = ''
+    plain_text=input("Enter plain text:")
+    l=[]
+
+    list=[]
+    for char in plain_text:
+        list.append(ord(char))
+    for num in list:
+        l.append(num+shift)
+    for num in l:
+        encypted_text+=chr(num)
+    print("Encrypted text:")
+    print(encypted_text)
+
+def decrypt(shift):
+    decypted_text = ''
+    encrypted_text = input("Enter Encrypted text:")
+    l = []
+
+    list = []
+    for char in encrypted_text:
+        list.append(ord(char))
+    for num in list:
+        l.append(num - shift)
+    for num in l:
+        decypted_text += chr(num)
+    print("decrypted text:")
+    print(decypted_text)
+
+print("Do you want to \n1.ercrypt or \n2.decrypt?")
+choice = input("Enter your choice (e/d):")
+match choice:
+    case "e"|"E":
+        try:
+            key = int(input("enter the key value:"))
+            encrypt(key)
+        except ValueError:
+            print("Error...Enter the key value of number type")
+    case "d"|"D":
+        try:
+            key = int(input("enter the key value:"))
+            decrypt(key)
+        except ValueError:
+            print("Error...Enter the key value of number type")
+    case _:
+        print("invalid choice....")
+
+
+# append(chr((ord(char)-65+shift) % 26 + 65))
