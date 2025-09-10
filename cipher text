@@ -2,7 +2,6 @@ def encrypt(shift):
     encypted_text = ''
     plain_text=input("Enter plain text:")
     l=[]
-
     list=[]
     for char in plain_text:
         list.append(ord(char))
@@ -11,13 +10,14 @@ def encrypt(shift):
     for num in l:
         encypted_text+=chr(num)
     print("Encrypted text:")
-    print(encypted_text)
+    print('\t',encypted_text)
+    # re_choice()
+
 
 def decrypt(shift):
     decypted_text = ''
     encrypted_text = input("Enter Encrypted text:")
     l = []
-
     list = []
     for char in encrypted_text:
         list.append(ord(char))
@@ -26,25 +26,40 @@ def decrypt(shift):
     for num in l:
         decypted_text += chr(num)
     print("decrypted text:")
-    print(decypted_text)
+    print('\t',decypted_text)
+    # re_choice()
 
-print("Do you want to \n1.ercrypt or \n2.decrypt?")
-choice = input("Enter your choice (e/d):")
-match choice:
-    case "e"|"E":
-        try:
-            key = int(input("enter the key value:"))
-            encrypt(key)
-        except ValueError:
-            print("Error...Enter the key value of number type")
-    case "d"|"D":
-        try:
-            key = int(input("enter the key value:"))
-            decrypt(key)
-        except ValueError:
-            print("Error...Enter the key value of number type")
-    case _:
-        print("invalid choice....")
+def re_choice():
+    r_choice=input('Do you want to continue? (y/n):')
+    if r_choice=='y' or r_choice=='Y':
+        choice()
+
+
+def choice():
+    print("Do you want to \n1.ercrypt or \n2.decrypt?")
+    choice = input("Enter your choice (e/d):")
+    match choice:
+        case "e"|"E":
+            try:
+                key = int(input("enter the key value:"))
+                encrypt(key)
+            except ValueError:
+                print("Error...Enter the key value of number type")
+        case "d"|"D":
+            try:
+                key = int(input("enter the key value:"))
+                decrypt(key)
+            except ValueError:
+                print("Error...Enter the key value of number type")
+        case _:
+            print("invalid choice....")
+    re_choice()
+
+choice()
+
+
 
 
 # append(chr((ord(char)-65+shift) % 26 + 65))
+
+# sfvv wwg -> 6 -> yl||&}}m
